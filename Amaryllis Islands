@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+	<map proto="1.3.6">
+		<name>Amaryllis Islands</name>
+		<version>1.0.3</version>
+		<objective>Destroy the monuments on the enemy side before them.</objective>
+		<authors>
+			<author>TheDarklink12</author>
+			<author>Echoglace</author>
+		</authors>
+		<contributors>
+			<contributor contribution="XML">Blakstas</contributor>
+		</contributors>
+		<teams>
+			<team id="blue-team" color="blue" max="20" max-overfill="25">Blue Team</team>
+			<team id="red-team" color="dark-red" max="20" max-overfill="25">Red Team</team>
+		</teams>
+		<kits>
+			<kit name="spawn" force="true">
+				<item slot="0">stone sword</item>
+				<item slot="1" enchantment="arrow_infinite:1">bow</item>
+				<item slot="28" amount="1">arrow</item>
+				<item slot="2" enchantment="did_speed:1">iron pickaxe</item>
+				<item slot="3">stone axe</item>
+				<item slot="5" amount="64">birch wood</item>
+				<item slot="6" amount="32">glass</item>
+				<item slot="7" amount="10">vines</item>
+				<item slot="8" amount="64">baked potato</item>
+			</kit>
+			<kit name="anti-spawnkill" parents="spawn" force="true">
+				<potion duration="5" amplifier="25">heal</potion>
+				<potion duration="5" amplifier="25">damage_resistance</potion>
+			</kit>
+			<kit name="blue" parents="spawn">
+				<helmet color="0066cc" enchantment="protection_projectile:2">leather helmet</helmet>
+				<chestplate color="0066cc">leather chestplate</chestplate>
+				<leggings color="0066cc">leather leggings</leggings>
+				<boots color="0066cc" enchantment="protection_fall:1">leather boots</boots>
+			</kit>
+			<kit name="red" parents="spawn">
+				<helmet color="cd0000" enchantment="protection_projectile:2">leather helmet</helmet>
+				<chestplate color="cd0000">leather chestplate</chestplate>
+				<leggings color="cd0000">leather leggings</leggings>
+				<boots color="cd0000" enchantment="protection_fall:1">leather boots</boots>
+			</kit>
+		</kits>
+		<spawns bedspawn="false">
+			<spawn team="blue" kit="blue">
+				<point yaw="-90">
+					<cuboid min="-16,53,-130" max="-20,53,-128" />
+				</point>
+				<point yaw="90">
+					<cuboid min="16,53,-128" max="20,53,-130" />
+				</point>
+			</spawn>
+			<spawn team="red" kit="red">
+				<point yaw="90">
+					<cuboid min="16,53,130" max="20,53,128" />
+				</point>
+				<point yaw="-90">
+					<cuboid min="-16,53,128" max="-20,53,130" />
+				</point>
+			</spawn>
+			<default yaw="180">
+				<cuboid min="-2,126,-2" max="2,126,2" />
+			</default>
+		</spawns>
+		<destroyables owner="blue" materials="obsidian" completion="100%">
+			<destroyable name="Monument A">
+				<region>
+					<cuboid min="-45,48,-55" max="-45,47,-55" />
+				</region>
+			</destroyable>
+			<destroyable name="Monument B">
+				<region>
+					<cuboid min="45,48,-56" max="45,47,-56" />
+				</region>
+			</destroyable>
+		</destroyables>
+		<destroyables owner="red" materials="obsidian" completion="100%">
+			<destroyable name="Monument A">
+				<region>
+					<cuboid min="45,48,55" max="45,47,55" />
+				</region>
+			</destroyable>
+			<destoyable name="Monument B">
+				<region>
+					<cuboid min="-45,48,56" max="-45,47,56" />
+				</region>
+			</destroyable>
+		</destroyables>
+		<modes>
+			<mode name="Beacon Monument Mode" after="45m" material="beacon" />
+			<mode name="Redstone Monument Block" after="120m" material="redstone block" />
+			<mode name="Coal Monument Block" after="150m" material="coal block" />
+		</modes>
+		<regions>
+			<apply block="deny-all" message="Don't edit the spawner's region!">
+				<cuboid min="4,44,-4" max="-4,51,4" />
+			</apply>
+			<apply block="deny-all" message="You reached the maximum build limit! [85 blocks]"
+				<cuboid name="above-85" min="oo,86,oo" max="oo,oo,oo" />
+			</apply>
+			<apply block="deny-all" message="You may not edit the spawns">
+				<cuboid min="-31,42,-137" max="31,70,-105" />
+				<cuboid min="31,42,137" max="-31,70,109" />
+			</apply>
+			<apply block="iron-blocks" message="You may only break iron blocks in this area!">
+				<cuboid min="-12,43,84" max="14,72,56" />
+			</apply>
+			<apply enter="only-blue" message="You are not allowed to enter in this area!">
+				<cuboid min="-31,42,-137" max="31,70,-105" />
+			</apply>
+			<apply enter="only-red" message="You are not allowed to enter in this area!">
+				<cuboid min="31,42,137" max="-31,70,109" />
+			</apply>
+		</regions>
+		<filters>
+			<filter name="deny-all" />
+			<filter name="iron-blocks" parents="deny-block">
+				<allow>
+					<block>iron block</block>
+				</allow>
+			</filter>
+			<filter name="deny-players" />
+			<filter name="only-blue" parents="deny-players">
+				<allow>
+					<team>blue</team>
+				</allow>
+			</filter>
+			<filter name="only-red" parents="deny-players">
+				<allow>
+					<team>red</team>
+				</allow>
+			</filter>
+		</filters>
+		<renewables>
+			<renewable rate="0.5" grow="true" particles="true" sound="false" avoid-entities="true">
+				<region>
+					<cuboid min="-13,51,78" max="13,55,61" />
+				</region>
+				<renew>iron block</renew>
+			</renewable>
+		</renewables>
+	</map>
