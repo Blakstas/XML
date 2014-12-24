@@ -64,25 +64,25 @@
 				<cuboid min="-2,126,-2" max="2,126,2" />
 			</default>
 		</spawns>
-		<destroyables owner="blue" materials="obsidian" completion="100%">
-			<destroyable name="Monument A">
+		<destroyables name="Monument A" materials="obsidian" completion="100%">
+			<destroyable owner="blue">
 				<region>
 					<cuboid min="-45,48,-55" max="-45,47,-55" />
 				</region>
 			</destroyable>
-			<destroyable name="Monument B">
+			<destroyable owner="red">
+				<region>
+					<cuboid min="45,48,55" max="45,47,55" />		
+				</region>
+			</destroyable>
+		</destroyables>
+		<destroyables name="Monument B" materials="obsidian" completion="100%">
+			<destroyable owner="blue">
 				<region>
 					<cuboid min="45,48,-56" max="45,47,-56" />
 				</region>
 			</destroyable>
-		</destroyables>
-		<destroyables owner="red" materials="obsidian" completion="100%">
-			<destroyable name="Monument A">
-				<region>
-					<cuboid min="45,48,55" max="45,47,55" />
-				</region>
-			</destroyable>
-			<destoyable name="Monument B">
+			<destoyable owner="red">
 				<region>
 					<cuboid min="-45,48,56" max="-45,47,56" />
 				</region>
